@@ -1,4 +1,4 @@
-package th.ac.ku.atm.model;
+package th.ac.ku.atm.service;
 
 public class BankAccountService {
 }
