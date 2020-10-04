@@ -1,4 +1,4 @@
-package th.ac.ku.atm.model;
+package th.ac.ku.atm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
