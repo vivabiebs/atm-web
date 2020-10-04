@@ -44,8 +44,16 @@ public class Customer {
         this.pin = pin;
     }
 
-
     public Customer get() {
         return new Customer();
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pin='" + pin + '\'' +
+                '}';
     }
 }
