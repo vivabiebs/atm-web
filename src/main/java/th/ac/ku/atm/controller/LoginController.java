@@ -17,26 +17,22 @@ public class LoginController {
     private CustomerService customerService;
     private BankAccountService bankAccountService;
 
-    public LoginController(CustomerService customerService,
-                           BankAccountService bankAccountService) {
+    public LoginController(CustomerService customerService, BankAccountService bankAccountService) {
         this.customerService = customerService;
         this.bankAccountService = bankAccountService;
     }
 
-    @GetMapping()
+    @GetMapping
     public String getLoginPage() {
         return "login";
     }
 
     @PostMapping
     public String login(@ModelAttribute Customer customer, Model model) {
-        Customer storedCustomer = customerService.checkPin(customer);
-
-        if (storedCustomer != null) {
-            model.addAttribute("customertitle",
-                    storedCustomer.getName() + " Bank Accounts");
-            model.addAttribute("bankaccounts",
-                    bankAccountService.getCustomerBankAccount(customer.getId()));
+        Customer matchedCustomer = customerService.checkPin(customer);
+        if (matchedCustomer != null) {
+            model.addAttribute("customertitle", matchedCustomer.getName() + " Bank Accounts");
+            model.addAttribute("bankaccounts", bankAccountService.getCustomerBankAccounts(customer.getId()));
             return "customeraccount";
         } else {
             model.addAttribute("greeting", "Can't find customer");
@@ -44,4 +40,3 @@ public class LoginController {
         }
     }
 }
-
